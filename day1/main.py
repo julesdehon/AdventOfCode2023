@@ -1,8 +1,6 @@
-from dataclasses import dataclass
 from pathlib import Path
 from typing import List, Callable
 
-from utils.utils import flatten
 
 WORD_TO_NUMBER = {
     "one": 1,
@@ -17,46 +15,21 @@ WORD_TO_NUMBER = {
 }
 
 
-@dataclass
-class NumberAndPosition:
-    number: int
-    position: int
-
-
-def find_all(substring: str, string: str) -> List[int]:
-    return [i for i in range(len(string)) if string.startswith(substring, i)]
-
-
 def calibration_value_from_digits(line: str) -> int:
     numbers = [int(char) for char in line if char.isdigit()]
     return numbers[0] * 10 + numbers[-1]
 
 
 def calibration_value_from_digits_or_spelled(line: str) -> int:
-    word_number_and_positions = flatten(
-        [
-            [
-                NumberAndPosition(WORD_TO_NUMBER[word], index)
-                for index in find_all(word, line)
-            ]
-            for word in WORD_TO_NUMBER
-            if word in line
-        ]
-    )
-    numeric_number_and_positions = [
-        NumberAndPosition(int(char), index)
-        for index, char in enumerate(line)
-        if char.isdigit()
-    ]
-    sorted_numbers = [
-        np.number
-        for np in sorted(
-            word_number_and_positions + numeric_number_and_positions,
-            key=lambda np: np.position,
-        )
-    ]
+    numbers = []
+    for i, c in enumerate(line):
+        if c.isdigit():
+            numbers.append(int(c))
+        for word, digit in WORD_TO_NUMBER.items():
+            if line[i:].startswith(word):
+                numbers.append(digit)
 
-    return sorted_numbers[0] * 10 + sorted_numbers[-1]
+    return numbers[0] * 10 + numbers[-1]
 
 
 def calibration_sum(
