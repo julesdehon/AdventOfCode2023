@@ -1,6 +1,5 @@
 from pathlib import Path
-from typing import List, Callable
-
+from typing import Callable, List
 
 WORD_TO_NUMBER = {
     "one": 1,
@@ -22,9 +21,9 @@ def calibration_value_from_digits(line: str) -> int:
 
 def calibration_value_from_digits_or_spelled(line: str) -> int:
     numbers = []
-    for i, c in enumerate(line):
-        if c.isdigit():
-            numbers.append(int(c))
+    for i, char in enumerate(line):
+        if char.isdigit():
+            numbers.append(int(char))
         for word, digit in WORD_TO_NUMBER.items():
             if line[i:].startswith(word):
                 numbers.append(digit)
@@ -39,20 +38,22 @@ def calibration_sum(
 
 
 def main() -> None:
-    input_lines = Path("input/input.txt").read_text().split("\n")
+    input_lines = Path("input/input.txt").read_text("utf-8").split("\n")
 
     sum_of_calibration_values_using_digits = calibration_sum(
         input_lines, calibration_value_from_digits
     )
     print(
-        f"The sum of all the calibration values using only digits was {sum_of_calibration_values_using_digits}"
+        "The sum of all the calibration values using only digits was"
+        f" {sum_of_calibration_values_using_digits}"
     )
 
     sum_of_calibration_values_using_digits_and_words = calibration_sum(
         input_lines, calibration_value_from_digits_or_spelled
     )
     print(
-        f"The sum of all the calibration values using digits and words was {sum_of_calibration_values_using_digits_and_words}"
+        "The sum of all the calibration values using digits and words was"
+        f" {sum_of_calibration_values_using_digits_and_words}"
     )
 
 

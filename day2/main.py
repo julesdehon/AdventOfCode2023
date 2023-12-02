@@ -1,10 +1,9 @@
+from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
-from typing import List, Dict
+from typing import Dict, List
 
 from utils.interfaces import IParsable
-from collections import defaultdict
-
 from utils.utils import parse_value_between_strings
 
 
@@ -61,7 +60,7 @@ class Constraint:
     max_red: int
     max_green: int
 
-    def breached(self, handful: Handful):
+    def breached(self, handful: Handful) -> bool:
         return (
             handful.blue > self.max_blue
             or handful.red > self.max_red
@@ -71,7 +70,8 @@ class Constraint:
 
 def main() -> None:
     games = [
-        Game.parse(line) for line in Path("input/input.txt").read_text().split("\n")
+        Game.parse(line)
+        for line in Path("input/input.txt").read_text("utf-8").split("\n")
     ]
     constraint = Constraint(max_blue=14, max_red=12, max_green=13)
     possible_games = [
@@ -85,7 +85,8 @@ def main() -> None:
 
     minimum_sets = [game.minimum_set_for_game_to_be_possible() for game in games]
     print(
-        f"The sum of the power of all the minimum sets is {sum(minimum_set.power() for minimum_set in minimum_sets)}"
+        "The sum of the power of all the minimum sets is "
+        f"{sum(minimum_set.power() for minimum_set in minimum_sets)}"
     )
 
 

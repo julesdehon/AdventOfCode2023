@@ -1,0 +1,9 @@
+[MESSAGES CONTROL]
+disable=C0103, # Variable name "e" doesn't conform to snake_case naming style (invalid-name)
+        C0114, # Missing module docstring (missing-module-docstring)
+        C0116, # Missing function or method docstring (missing-function-docstring)
+        C0115, # Missing class docstring (missing-class-docstring)
+        R0903, # Too few public methods
+
+[REPORTS]
+score=no
