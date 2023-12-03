@@ -1,6 +1,7 @@
 from typing import Callable, List, Optional, TypeVar
 
 T = TypeVar("T")
+X = TypeVar("X")
 
 
 def flatten(list_of_lists: List[List[T]]) -> List[T]:

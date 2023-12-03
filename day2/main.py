@@ -80,7 +80,8 @@ def main() -> None:
         if not any(constraint.breached(handful) for handful in game.handfuls)
     ]
     print(
-        f"The sum of the possible game IDs is {sum(game.game_id for game in possible_games)}"
+        "The sum of the possible game IDs is"
+        f" {sum(game.game_id for game in possible_games)}"
     )
 
     minimum_sets = [game.minimum_set_for_game_to_be_possible() for game in games]

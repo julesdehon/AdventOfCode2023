@@ -11,5 +11,5 @@ isort --atomic "$_ROOT_DIR"
 echo "${GREEN}Sorted imports${NO_COLOR}"
 
 echo "Formatting source code..."
-black "$_ROOT_DIR"
+black --preview "$_ROOT_DIR"
 echo "${GREEN}Formatted source code${NO_COLOR}"
