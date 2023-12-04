@@ -59,7 +59,7 @@ def main() -> None:
     card_id_to_num_copies = process_cards(cards)
     print(
         "After processing all cards, you end up with"
-        f" {sum(num_copies for num_copies in card_id_to_num_copies.values())} total"
+        f" {sum(card_id_to_num_copies.values())} total"
         " scratch cards"
     )
 
