@@ -19,8 +19,8 @@ class Card(IParsable):
         )
         string = string[string.find(":") + 1 :]
         raw_winning_numbers, raw_your_numbers = string.split(" | ")
-        winning_numbers = {int(num) for num in raw_winning_numbers.split() if num != ""}
-        your_numbers = {int(num) for num in raw_your_numbers.split() if num != ""}
+        winning_numbers = {int(num) for num in raw_winning_numbers.split()}
+        your_numbers = {int(num) for num in raw_your_numbers.split()}
 
         return Card(
             card_id=card_id,
