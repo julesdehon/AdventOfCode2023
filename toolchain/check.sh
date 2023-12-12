@@ -2,7 +2,7 @@ _SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 _ROOT_DIR="$(readlink -f "$_SCRIPT_DIR/../")"
 source "$_ROOT_DIR/toolchain/colours.sh"
 
-if ! black --check "$_ROOT_DIR"; then
+if ! black --preview --check "$_ROOT_DIR"; then
   echo "${RED}[RESULT:ERROR] Code is NOT formatted correctly; run: format.sh${NO_COLOR}"
   exit 1
 fi
