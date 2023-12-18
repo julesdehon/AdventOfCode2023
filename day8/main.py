@@ -28,7 +28,7 @@ class Node(IParsable):
         if instruction == Instruction.RIGHT:
             return self.right
 
-        raise Exception(f"Unknown instruction: {instruction}")
+        raise ValueError(f"Unknown instruction: {instruction}")
 
     @classmethod
     def parse(cls, string: str) -> "Node":
