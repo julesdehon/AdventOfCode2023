@@ -82,7 +82,7 @@ class Hand:
 
         cards_to_occurrences = Counter(self.cards)
         most_common_card, _ = max(
-            [(c, o) for c, o in cards_to_occurrences.items() if c != self.JOKER],
+            ((c, o) for c, o in cards_to_occurrences.items() if c != self.JOKER),
             key=lambda x: x[1],
             default=(self.ACE, 0),
         )

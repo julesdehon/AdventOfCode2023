@@ -4,6 +4,7 @@ disable=C0103, # Variable name "e" doesn't conform to snake_case naming style (i
         C0116, # Missing function or method docstring (missing-function-docstring)
         C0115, # Missing class docstring (missing-class-docstring)
         R0903, # Too few public methods
+        R0911, # Too many return statements
 
 [REPORTS]
 score=no
